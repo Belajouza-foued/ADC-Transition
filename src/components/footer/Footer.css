@@ -1,0 +1,60 @@
+footer {
+    margin-top: 5%;
+   
+}
+.title-f {
+    margin-top: 7%;
+}
+.social-icon {
+    color: blue;
+}
+.social-icon svg {
+    color: #fff; /* Default color for icons */
+    transition: color 0.3s ease;
+}
+.social-icon:hover svg {
+    color: #ff0000; /* Change to your desired hover color */
+}
+.bg-custom {
+    background-color:#325277;
+}
+.select.input.form-control {
+    width: 30%;
+}
+.touch {
+    margin-left: 10%;   
+    font-size: 15px;
+}
+.image-12 {
+    width: 30px;
+    height: 30px;
+    margin-left: 19%;
+    }
+.image-13 {
+    width: 30px;
+    height: 30px;   
+}
+.image-14 {
+    width: 30px;
+    height: 30px;
+    margin-right: 10%;
+
+}
+.info-map {
+    margin-right: 20%;
+}
+.image-17 {
+    width: 110px;
+    border-radius: 50%;
+    margin-top: 20%;    
+}
+.image-18 {
+    border-radius: 50%;
+    width: 110px;
+    margin-top: 25%;
+    margin-left: 5%;
+}
+.name-footer {
+    margin-top: 5%;
+    margin-left: 10%;
+}

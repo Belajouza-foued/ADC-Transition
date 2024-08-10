@@ -1,0 +1,281 @@
+.carroussel {   
+    overflow: hidden;
+    width: 100vw;
+    height: 80vh;
+    margin-top: 3%;   
+ }
+ .images {
+    width: 500vh;
+    height: 1000vh;
+ display: flex;
+ animation-duration:10s ;
+ animation-name: mesImages;
+ animation-iteration-count: infinite;
+ }
+ .image {
+    width: 100vw; /* Largeur de chaque image */
+    height: 90vh; /* Hauteur de chaque image */
+    object-fit: contain;
+ }
+ @keyframes mesImages {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-550px);
+        }
+        50% {
+          transform: translateX(-1100px);
+        }
+        75% {
+          transform: translateX(-1650px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+  }
+  .title {
+    text-align: center;
+    color: rgb(126, 69, 180);   
+  }
+  .text-1 {
+    font-size:x-large;
+    color: #325277;
+  }
+  .projet {
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+  }
+  .title-3 {
+    color: #325277;
+    margin-top: 20px;
+    font-size:30px;
+  }  
+  .title-2 {
+    color: #325277;
+       margin-top: 20px;
+       font-size:30px;
+  }  
+  .title-4 {    
+    text-align: center;
+    font-size:50px; 
+    color: rgb(126, 69, 180);   
+  }
+.title-5 {
+    text-align: center;
+    color: #325277;
+}
+.texts {
+    text-align: center;
+}
+.image-7 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-left: 5%;
+        
+}
+.image-9 {
+    width: 150px;
+    height: 150px;
+    margin-left: 10%;
+    border-radius: 50%;
+}
+.sarra {
+    margin-left: 5%;    
+}
+.text-13 {
+    color: chocolate;
+}
+.image-face {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-left: 5%;
+}
+.mahmoud {
+    margin-left: 70%;
+}
+.text-14 {
+    text-align: center;
+    color: chocolate;
+    margin-right: 25%;
+}
+.plus-1 {
+    color: blue;
+    margin-left: 5%;   
+    font-size: 25px;
+}
+.plus-2 {
+    color: blue;
+    margin-left: 15%;
+    font-size: 25px;
+}
+.services {
+    text-align: center;
+    color: #325277;
+    font-size: 50px;
+    margin-bottom: 10px;
+    margin-right: 5%;
+  
+}
+.panier {
+    width: 40%;
+    margin-left: 15%;
+    text-align: center;
+} 
+.image-11 {
+    margin-left: 50%;
+    width: 200px;
+    height: 200px;
+    border-radius: 10%;
+    color: #325277;
+    margin-top: 20px;
+}
+
+.card-title {
+    color: #325277;
+    margin-left: 23%;
+}
+.card-title1 {
+    color: #325277;
+    margin-left: 20%;
+    margin-top: 25px;
+}
+.card-title2 {
+    margin-left: 10%;
+}
+.card-body2 {
+    margin-top: 5%;
+}
+.panier-2 {
+    width: 40%;
+    margin-left: 15%;
+    text-align: center;
+    margin-top: 3%;
+} 
+.contact-us {
+    margin-top: 3%;
+    text-align: center;
+    font-size: 50px;
+    color: rgb(126, 69, 180); 
+}
+
+.style {
+  
+    text-align: center;
+    color: #325277;
+}
+.contact-1 {
+    margin-bottom: 5px;
+    text-align: center;
+}
+.group {
+    width: 1200px;
+    height: 750px;
+    margin-left: 10%;
+}
+.form-label {
+    font-size: 20px;opacity: 100%;
+    color: black;
+}
+.form-label1 {
+    margin-left: 27%;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.Adresse {
+width: 50%;
+margin-left: 25%;
+border: 1px solid  #325277;
+}
+.image-12 {
+    width: 70px;
+    height: 70px;
+    margin-top: 2%;
+    margin-left: 15%;    
+}
+.info {
+    margin-top: 6%;
+    margin-left: 4%;
+}
+.image-13 {
+    width: 70px;
+    height: 70px;
+    margin-top: 2%;
+    margin-left: 18%;  
+}
+.info-email {
+    margin: 15px;
+    margin-left: 30px;
+}
+.image-14 {
+    width: 70px;
+    height: 70px;
+    margin-top: 15px;
+}
+.info-2 {
+    margin-left: 18%;
+}
+.info-map {
+    margin-left: 5%;
+}
+.inscriv {
+    margin-bottom:2%;
+    margin-left: 10%;
+    width: 10%;
+}
+.surname {
+    border: 1px solid #325277;;
+}
+.name {
+    border: 1px solid  #325277;
+}
+.password {
+    border: 1px solid  #325277;
+}
+.email {
+    border: 1px solid  #325277;
+}
+
+.role {
+    width: 40%;
+    margin-left: 35%;
+    border: 1px solid  #325277;
+}
+.form-select1 {
+    width: 40%;
+    margin-left: 25%;
+    border-radius: 5px;
+    height: 40px;
+    border: 1px solid  #325277;
+ 
+   
+}
+.age {
+    width: 40%;
+    margin-left: 25%;
+    border: 1px solid  #325277;
+}
+.dip {
+    width: 50%;
+    margin-left: 25%;
+    border: 1px solid  #325277;
+}
+.dip-1 {
+    margin-left: 27%;    
+}
+.role-1 {
+    margin-left: 36%;   
+}
+.level-1 {
+    margin-left: 27%;   
+}
+.age-1 {
+    margin-left:27%   
+}
+.form-check-input {
+    border: 1px solid  #325277;
+}
+

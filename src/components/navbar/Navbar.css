@@ -1,0 +1,148 @@
+.navbar-1 {
+    height: 25%;
+  
+   
+    
+       
+}
+.navbar {
+    color:#4E719B ;  
+    height: 85px;
+    width: 100%;  
+       
+   
+} 
+.navbar .nav-link {
+    color: white;
+}
+.navbar-brand {
+    margin-left: 20%;
+    color: white; 
+}
+
+.form-select {
+    border: none;
+    width: 110px;  
+    background-color: #325277;
+    height: 35px;
+     margin-right: 65%;
+    position: relative;
+    display: inline-block;
+    color: white;
+    cursor: pointer;     
+        }
+        select {
+            color: white;
+            background-color: red;
+        }
+        
+.pict {
+    width: 90px;
+    height: 70px;
+    margin-left: 20%;
+   border-radius: 60%;
+}
+.nav-link {
+    color: #325277;
+}
+.touch-f {
+    margin-top: 22%;
+}
+.mx-2social-icon {
+margin-left: 20px;
+justify-content: center;
+color: #325277;
+    margin: 0 2px; /* Ajustez cette valeur pour diminuer ou augmenter l'espace */
+}
+
+
+
+.bg-custom {
+    background-color:#325277;
+}
+.entrepris {
+    color: white;
+}
+.select.custom {
+    position: relative;
+            display: inline-block;
+            border: none;
+}
+.groupe {
+    margin-left: 10%;
+    justify-content: center;
+    
+    
+}
+.icon-nav {
+    color: #325277;
+    margin-right: 5px;
+}
+.place {
+    display: flex;
+    justify-content:center}
+.phonebook {
+    margin-left: 5%;
+}
+.email-nav {
+    margin-right: 5%;
+}
+.position {
+    margin-right: 10px;
+}
+.big {
+    color: #FFA500;    
+ margin-top: 15px;
+   
+    font-size: 20;
+
+}
+.small {
+    color: #FFA500
+    ;
+    font-size: 20px;
+    
+}
+.transition {
+    margin-left: 5%;
+    margin-bottom: 13px;
+    text-align: center;
+   
+}
+.divider {
+    border: 1px solid;
+  border-top: 5px solid white; /* Couleur et épaisseur de la ligne */opacity: 100%;
+  margin: 1px 0; /* Espacement au-dessus et au-dessous de la ligne */
+}
+.form-centre {
+    color: white;
+}
+.flag {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+   margin-left: 30%;
+  
+}
+
+.germany {
+   display: flex;
+   flex-direction: row;
+}
+.g {
+    color: black;
+    font-size: 25px;
+    margin-left: 5px;
+}
+.e {
+    color: #FFA500;
+    font-size: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.r {
+    color: red;
+    font-size: 25px;
+    margin-left: 5px;
+    margin-top: 10px;
+}
