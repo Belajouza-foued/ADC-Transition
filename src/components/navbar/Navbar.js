@@ -1,78 +1,126 @@
 import { Link, Outlet } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
-import image15 from "../../pages/images/first.jpg";
-import image16 from "../../pages/images/images (8).jpeg";
 import './Navbar.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// Example import from @fortawesome/free-brands-svg-icons
-import { faSquareFacebook, faSquareTwitter,faSquareInstagram, faLinkedin,} from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope ,faLocationDot,faSquarePhone} from '@fortawesome/free-solid-svg-icons';
-const Navbar =() => {
+import EventBus from "../../auth/Event";
+import { Component } from "react";
+import AuthService from "../../services/auth.service";
+class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.logOut = this.logOut.bind(this);
+
+    this.state = {
+      showInstructorBoard: false,
+      showModeratorBoard: false,
+      showAdminBoard: false,
+      currentUser: undefined,
+    };
+  }
+
+  componentDidMount() {
+    const user = AuthService.getCurrentUser();
+
+    if (user) {
+      this.setState({
+        currentUser: user,
+        showEmployerBoard: user.roles.includes("ROLE_EMPLOYER"),
+        showAdminBoard: user.roles.includes("ROLE_ADMIN"),
+        showCandidateBoard: user.roles.includes("ROLE_CANDIDATE"),
+      });
+    }
+    
+    EventBus.on("logout", () => {
+      this.logOut();
+    });
+  }
+
+  componentWillUnmount() {
+    EventBus.remove("logout");
+  }
+
+  logOut() {
+    AuthService.logout();
+    this.setState({
+      showCandidateBoard: false,
+      showAdminBoard: false,
+      showEmployerBoard: false,
+      currentUser: undefined,
+    });
+  }
+
+ render () {
+  const { currentUser, showEmployerBoard, showAdminBoard ,showCandidateBoard} = this.state;
+
     return(
         <>
-        <nav class="navbar-1 mb-0 pb-0">
-<div className='first container-fluid bg bg-dark-subtle'>
-<div className='row'>
-  <div className='col-4'>
-    <form className='groupe'>
-    <Link to="https://www.facebook.com" className="text-white mx-2"><FontAwesomeIcon icon={faSquareFacebook} className="mx-2social-icon" /></Link>
-                        <Link to="https://www.twitter.com" className="text-white mx-2 "><FontAwesomeIcon icon={faSquareTwitter} className="mx-2social-icon" /></Link>
-                        < Link to="https://www.linkedin.com" className="text-white mx-2 "><FontAwesomeIcon icon={faLinkedin} className=" mx-2social-icon" /></Link>
-                      < Link to="https://www.instagram.com" className="text-white mx-2 "><FontAwesomeIcon icon={faSquareInstagram} className=" mx-2social-icon" /></Link>
-                      </form>
-  </div>
-<div className="col-8">
-  <div className="place"> 
-    <span className="email-nav"><FontAwesomeIcon icon={faEnvelope} className="icon-nav" />contact@adc.com</span> 
-    <span className="position"><FontAwesomeIcon icon={faLocationDot} className="icon-nav"/>Rue 200,Sousse</span>
-    <span className="phonebook"><FontAwesomeIcon icon={faSquarePhone} className="icon-nav"/>51 452 230</span>
-    </div> 
-</div>
-
- 
-</div>
-</div>
-</nav>
-       <nav className="navbar navbar-expand-lg bg-custom">        
-  <div className="container-fluid">  
-  <div>
-      <img className="pict" src={image15} alt=""></img>
-  </div>      
+       <nav className="navbar navbar-expand-lg bg-body-tertiary">
+  <div className="container-fluid">
     <Link className="navbar-brand"to='/'>Home</Link>
-    
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">       
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <Link className="nav-link" to='/entreprise'>Entreprise</Link>
-        </li>         
+          <Link className="nav-link active" aria-current="page" to='/contact'>Contact</Link>
+        </li>
         <li className="nav-item">
-          <Link className="nav-link" aria-current="page" to='/contact'>Contact</Link>
-        </li>    
-        <li className="nav-item">
-          <Link className="nav-link" aria-current="page" to='/candidat'>Candidat</Link>
-        </li>     
-              </ul>                
-            <select className="" >  
-            <option value="/solution">Solution</option>
-  <option value="/formation">Formation</option>
-  <option value="/recruiting">Recruiting</option>
-  <option value="/Project">Ourproject</option>
-</select>
-    </div> 
-<div className="col-3"  >
-             <div className="germany">
-      <img className="flag" src={image16} alt=""></img>     
-         <span className="g">G</span>
-     <span className="e">E</span>
-     <span className="r">R</span>
-         </div>
-      </div>
-     
+          <Link className="nav-link" to='/login'>Login</Link>
+        </li>   
+          <li className="nav-item"></li>
+          <Link className="nav-link" to ='/register'>Register</Link>
+        {currentUser && (
+              <li className="nav-item">
+              <Link className="nav-link" to='/user-home'>User home</Link>
+            </li>
+            )}
+            {showAdminBoard && (
+              <li className="nav-item">
+              <Link className="nav-link" to='/admin-home'>Admin home</Link>
+            </li>
+            )}
+            {showEmployerBoard && (
+              <li className="nav-item">
+              <Link className="nav-link" to='/employer-home'>Employer home</Link>
+            </li>
+            )}
+            {showCandidateBoard && (
+              <li className="nav-item">
+              <Link className="nav-link" to='/candidate-home'>Candidate home</Link>
+            </li>
+            )}
+                     {currentUser ? (
+            <div className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link to={"/profil"} className="nav-link">
+                  {currentUser.username}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <a href="/login" className="nav-link" onClick={this.logOut}>
+                  LogOut
+                </a>
+              </li>
+            </div>
+          ) : (
+            <div className="navbar-nav ml-auto">              
+
+              
+            </div>
+          )}
+      </ul>
+
+      <form className="d-flex" role="search">
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button className="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
   </div>
 </nav>
         <Outlet />
         </>
     )
     };
+  }
 export default Navbar;
 

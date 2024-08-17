@@ -1,0 +1,81 @@
+.image-1 { 
+    margin-left:40%;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+.job {
+    margin-bottom: 20px;
+}
+.welcome {
+    margin-left: 10%;
+    font-size:80px;
+    color: blue;
+    margin-bottom: 25px;
+}
+.first-text {
+    margin-left: 5%;
+    color: #325277;
+    font-size: larger;
+}
+.second-text {
+margin-left: 5%;
+font-size: medium;
+}
+.candid {
+    width: 50%;    
+}
+.employ {
+    width: 50%;
+    margin-top: 10px;    
+}
+.candid.btn:hover {
+    color: #325277;
+}
+.employ.btn:hover {
+    color: #325277;
+}
+.account-line {
+    margin-left: 10px;
+}
+.summary-hover {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .summary-hover:hover {
+    background-color: #ddd;
+    color: #333;
+  }
+  
+  .summary-hover::marker {
+    content: '▶'; /* Custom marker for the summary */
+    color: #666;
+    margin-right: 5px;
+  }
+  details[open] .summary-hover::marker {
+    content: '▼'; /* Change marker when details are open */
+  }
+  .details-summary[open] .arrow {
+    opacity: 0; /* Hide arrow when details are open */
+  }
+  details[open] .arrow {
+    opacity: 0; /* Hide arrow when details are open */
+  }
+  .arrow {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: solid #666;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -5px; /* Center the arrow vertically */
+    transition: opacity 0.3s;
+  }
+  

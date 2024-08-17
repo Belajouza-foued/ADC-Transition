@@ -1,0 +1,25 @@
+.form-control.cadre {
+    width: 70%;
+}
+.btn-cadre {
+    margin-top: 25px;
+    margin-left: 50px;
+    width: 40%;
+}
+label{
+    color: #325277;
+}
+
+.image-2 img {
+    width:100% ;
+}
+.image-2 {
+    overflow: hidden;
+    border: 1px solid ;
+    border-radius: 50%;
+    width:150px;
+}
+.image-2 :hover {
+transform: scale(1.2);
+}
+

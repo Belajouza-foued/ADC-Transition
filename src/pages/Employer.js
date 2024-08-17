@@ -3,8 +3,11 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
-
 import AuthService from "../services/auth.service";
+import './styles/Employer.css'
+import image2 from "../pages/images/first.jpg"
+import image3 from "../pages/images/Employe.png"
+
 
 const required = value => {
   if (!value) {
@@ -35,16 +38,35 @@ const vusername = value => {
     );
   }
 };
-const niveau = value => {
-  if (value.length < 3 || value.length > 20) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The niveau must be between 3 and 20 characters.
-      </div>
-    );
-  }
-};
-
+const entreprise = value => {
+    if (value.length < 3 || value.length > 20) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          The niveau must be between 3 and 20 characters.
+        </div>
+      );
+    }
+  };
+  const number = value => {
+    if (value.length < 3 || value.length > 20) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          The niveau must be between 3 and 20 characters.
+        </div>
+      );
+    }
+  };
+  const site = value => {
+    if (value.length < 3 || value.length > 20) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          The niveau must be between 3 and 20 characters.
+        </div>
+      );
+    }
+  };
+  
+  
 const vpassword = value => {
   if (value.length < 6 || value.length > 40) {
     return (
@@ -62,12 +84,16 @@ export default class Register extends Component {
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
-    this.onChangeNiveau = this.onChangeNiveau.bind(this);
+    this.onChangeEntreprise = this.onChangeEntreprise.bind(this);
+    this.onChangeSite = this.onChangeSite.bind(this);
+    this.onChangeNumber = this.onChangeNumber.bind(this);
     this.state = {
       username: "",      
       email: "",
       password: "",
-      niveau: "",
+      entreprise: "",
+      number:"",
+      site:"",      
       successful: false,
       message: ""
     };
@@ -90,9 +116,20 @@ export default class Register extends Component {
       password: e.target.value
     });
   }
-  onChangeNiveau(e) {
+  
+  onChangeEntreprise(e) {
     this.setState({
-      niveau: e.target.value
+      entreprise: e.target.value
+    });
+  }
+  onChangeNumber(e) {
+    this.setState({
+      number: e.target.value
+    });
+  }
+  onChangeSite(e) {
+    this.setState({
+      site: e.target.value
     });
   }
 
@@ -111,7 +148,9 @@ export default class Register extends Component {
         this.state.username,
         this.state.email,
         this.state.password,
-        this.state.niveau,
+        this.state.number,
+        this.state.entreprise,
+        this.state.site
       ).then(
         response => {
           this.setState({
@@ -140,11 +179,12 @@ export default class Register extends Component {
     return (
       <div className="col-md-12">
         <div className="card card-container">
+            <div className="image-2">
           <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            src={image2}
             alt="profile-img"
-            className="profile-img-card"
-          />
+            
+          /></div>
 
           <Form
             onSubmit={this.handleRegister}
@@ -153,12 +193,13 @@ export default class Register extends Component {
             }}
           >
             {!this.state.successful && (
-              <div>
+              <div className="row">
+                <div className="col-6">
                 <div className="form-group">
                   <label htmlFor="username">Username</label>
                   <Input
                     type="text"
-                    className="form-control"
+                    className="form-control cadre"
                     name="username"
                     value={this.state.username}
                     onChange={this.onChangeUsername}
@@ -170,7 +211,7 @@ export default class Register extends Component {
                   <label htmlFor="email">Email</label>
                   <Input
                     type="text"
-                    className="form-control"
+                    className="form-control cadre"
                     name="email"
                     value={this.state.email}
                     onChange={this.onChangeEmail}
@@ -182,36 +223,54 @@ export default class Register extends Component {
                   <label htmlFor="password">Password</label>
                   <Input
                     type="password"
-                    className="form-control"
+                    className="form-control cadre"
                     name="password"
                     value={this.state.password}
                     onChange={this.onChangePassword}
                     validations={[required, vpassword]}
                   />
                 </div>
+                
+                </div>
+                <div className="col-6">
                 <div className="form-group">
-                  <label htmlFor="niveau">Niveau</label>
+                  <label htmlFor="entreprise">Entreprise</label>
                   <Input
                     type="text"
-                    className="form-control"
+                    className="form-control cadre"
+                    name="entreprise"
+                    value={this.state.entreprise}
+                    onChange={this.onChangeEntreprise}
+                    validations={[required, entreprise]}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="number">Number</label>
+                  <Input
+                    type="text"
+                    className="form-control cadre"
+                    name="number"
+                    value={this.state.number}
+                    onChange={this.onChangeNumber}
+                    validations={[required, number]}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="site">Site</label>
+                  <Input
+                    type="text"
+                    className="form-control cadre"
                     name="niveau"
-                    value={this.state.niveau}
-                    onChange={this.onChangeNiveau}
-                    validations={[required, niveau]}
+                    value={this.state.site}
+                    onChange={this.onChangeSite}
+                    validations={[required, site]}
                   />
                 </div>
 
                 <div className="form-group">
-                  <button className="btn btn-primary btn-block">Sign Up</button>
+                  <button className="btn btn-primary btn-cadre">Sign Up</button>
                 </div>
-                <details>
-        <summary>More Information</summary>
-        <p>Here is some additional information you might find useful.</p>
-        <ul>
-          <li><a href="https://example.com">Example Link 1</a></li>
-          <li><a href="https://example.com">Example Link 2</a></li>
-        </ul>
-      </details>
+              </div>
               </div>
             )}
 
@@ -228,6 +287,7 @@ export default class Register extends Component {
                   {this.state.message}
                 </div>
               </div>
+              
             )}
             <CheckButton
               style={{ display: "none" }}
@@ -238,6 +298,7 @@ export default class Register extends Component {
           </Form>
         </div>
       </div>
+      
     );
   }
 }

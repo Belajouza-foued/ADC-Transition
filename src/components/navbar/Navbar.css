@@ -13,11 +13,11 @@
    
 } 
 .navbar .nav-link {
-    color: white;
+    color: black;
 }
 .navbar-brand {
     margin-left: 20%;
-    color: white; 
+    color: black; 
 }
 
 .form-select {
