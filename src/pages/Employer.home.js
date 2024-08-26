@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
-import UserService from "../services/User.service";
+import EmployerService from "../services/Employer.service";
 import EventBus from "../auth/Event";
 
-export default class BoardUser extends Component {
+export default class BoardEmployer extends Component {
   constructor(props) {
     super(props);
 
@@ -13,7 +13,7 @@ export default class BoardUser extends Component {
   }
 
   componentDidMount() {
-    UserService.getUserBoard().then(
+    EmployerService.getEmployerBoard().then(
       response => {
         this.setState({
           content: response.data

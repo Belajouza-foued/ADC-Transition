@@ -3,10 +3,10 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
-import AuthService from "../services/auth.service";
+import EmployerAuthService from "../services/employer.auth.service";
 import './styles/Employer.css'
-import image2 from "../pages/images/first.jpg"
-import image3 from "../pages/images/Employe.png"
+import image2 from "../pages/images/logo-adc.png"
+
 
 
 const required = value => {
@@ -144,7 +144,7 @@ export default class Register extends Component {
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      AuthService.register(
+      EmployerAuthService.register(
         this.state.username,
         this.state.email,
         this.state.password,
@@ -178,7 +178,7 @@ export default class Register extends Component {
   render() {
     return (
       <div className="col-md-12">
-        <div className="card card-container">
+        <div className="card card-container contain">
             <div className="image-2">
           <img
             src={image2}
@@ -195,7 +195,7 @@ export default class Register extends Component {
             {!this.state.successful && (
               <div className="row">
                 <div className="col-6">
-                <div className="form-group">
+                <div className="form-group left">
                   <label htmlFor="username">Username</label>
                   <Input
                     type="text"
@@ -207,7 +207,7 @@ export default class Register extends Component {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group left">
                   <label htmlFor="email">Email</label>
                   <Input
                     type="text"
@@ -219,7 +219,7 @@ export default class Register extends Component {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group left">
                   <label htmlFor="password">Password</label>
                   <Input
                     type="password"

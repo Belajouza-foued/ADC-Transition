@@ -1,18 +1,13 @@
 
 import 'bootstrap/dist/css/bootstrap.css'; 
 import '../pages/styles/Register.css';
-import image1 from './images/first.jpg';
 import { Link } from "react-router-dom";
 const Register = () => {
 return(
 <>
 <div className="container-fluid bg-body-secondary">
-<div className="row"> 
-<div className="col-12"> 
-<img src={image1} className="image-1" alt=""/>
-<h1 className='welcome'>Join us</h1>
-  </div>  
-  <div className='col-8'>
+<div className="row">  
+  <div className='col-8 registration'>
     <h4 className='first-text'>Job Offers in Germany - Free Registration</h4>
     <p className='second-text'>Join Adc Transition.com for free and benefit from personalized support.</p>
     <h4 className='first-text'>Post a Job and Hire the Best Talent in Tunisia</h4>
