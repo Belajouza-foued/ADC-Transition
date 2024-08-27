@@ -91,7 +91,7 @@ const goverment = value => {
     }
   };
   const birthday = value => {
-    if (value.length < 3 || value.length > 20) {
+    if (!value) {
       return (
         <div className="alert alert-danger" role="alert">
           The niveau must be between 3 and 20 characters.
@@ -329,18 +329,7 @@ export default class Register extends Component {
                     <option className="frensh">Frensh</option>
                     </select>
                 </div>
-
-                <div className="form-group two">
-                  <label htmlFor="password">Password</label>
-                  <Input
-                    type="password"
-                    className="form-control bordure"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.onChangePassword}
-                    validations={[required, vpassword]}
-                  />
-                </div>
+               
                 <div className="form-group two">
                   <label htmlFor="niveau">Niveau</label>
                   <select
@@ -375,10 +364,21 @@ export default class Register extends Component {
                   <Input
                     type="date"
                     className="form-control bordure"
-                    name="date"
+                    name="birthday"
                     value={this.state.birthday}
                     onChange={this.onChangeBirthday}
                     validations={[required, birthday]}
+                  />
+                </div>
+                <div className="form-group two">
+                  <label htmlFor="password">Password</label>
+                  <Input
+                    type="password"
+                    className="form-control bordure"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.onChangePassword}
+                    validations={[required, vpassword]}
                   />
                 </div>
 
@@ -402,7 +402,7 @@ export default class Register extends Component {
                   {this.state.message}
                 </div>
               </div>
-            )}
+            )}            
             <CheckButton
               style={{ display: "none" }}
               ref={c => {
