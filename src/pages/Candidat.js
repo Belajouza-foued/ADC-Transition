@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
-import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 import AuthService from "../services/auth.service";
 import image2 from "../pages/images/logo-adc.png"
-import Candidat from "./styles/Candidat.css"
+import CheckButton from "react-validation/build/button";
+import Candidat from "../pages/styles/Candidat.css"
+import { crudRouter } from '../Crud-router';
 
 const required = value => {
   if (!value) {
@@ -16,40 +17,20 @@ const required = value => {
     );
   }
 };
-
+const vfirstname = value => {
+  if (value.length < 3 || value.length > 20) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        The firstName must be between 3 and 20 characters.
+      </div>
+    );
+  }
+};
 const email = value => {
   if (!isEmail(value)) {
     return (
       <div className="alert alert-danger" role="alert">
         This is not a valid email.
-      </div>
-    );
-  }
-};
-
-const vusername = value => {
-  if (value.length < 3 || value.length > 20) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The username must be between 3 and 20 characters.
-      </div>
-    );
-  }
-};
-const langue = value => {
-  if (value.length < 3 || value.length > 20) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The niveau must be between 3 and 20 characters.
-      </div>
-    );
-  }
-};
-const entreprise = value => {
-  if (value.length < 3 || value.length > 20) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The niveau must be between 3 and 20 characters.
       </div>
     );
   }
@@ -63,7 +44,16 @@ const number = value => {
     );
   }
 };
-const site = value => {
+const birthday = value => {
+  if (!value) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        The niveau must be between 3 and 20 characters.
+      </div>
+    );
+  }
+};
+const adresse = value => {
   if (value.length < 3 || value.length > 20) {
     return (
       <div className="alert alert-danger" role="alert">
@@ -72,7 +62,8 @@ const site = value => {
     );
   }
 };
-const niveau = value => {
+
+const education = value => {
   if (value.length < 3 || value.length > 20) {
     return (
       <div className="alert alert-danger" role="alert">
@@ -81,7 +72,27 @@ const niveau = value => {
     );
   }
 };
-const goverment = value => {
+
+
+const file = value => {
+  if (value.length < 3 || value.length > 20) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        The niveau must be between 3 and 20 characters.
+      </div>
+    );
+  }
+};
+const city = value => {
+  if (value.length < 3 || value.length > 20) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        The niveau must be between 3 and 20 characters.
+      </div>
+    );
+  }
+};
+const levelEnglish = value => {
     if (value.length < 3 || value.length > 20) {
       return (
         <div className="alert alert-danger" role="alert">
@@ -90,8 +101,8 @@ const goverment = value => {
       );
     }
   };
-  const birthday = value => {
-    if (!value) {
+  const levelFrensh = value => {
+    if (value.length < 3 || value.length > 20) {
       return (
         <div className="alert alert-danger" role="alert">
           The niveau must be between 3 and 20 characters.
@@ -99,7 +110,60 @@ const goverment = value => {
       );
     }
   };
-  
+  const levelGermany = value => {
+    if (value.length < 3 || value.length > 20) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          The niveau must be between 3 and 20 characters.
+        </div>
+      );
+    }
+  };
+  const drivingLicence = value => {
+    if (value.length < 3 || value.length > 20) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          The niveau must be between 3 and 20 characters.
+        </div>
+      );
+    }
+  };
+  const lastname = value => {
+    if (value.length < 3 || value.length > 20) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          The niveau must be between 3 and 20 characters.
+        </div>
+      );
+    }
+  };
+  const gender = value => {
+    if (value.length < 3 || value.length > 20) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          The niveau must be between 3 and 20 characters.
+        </div>
+      );
+    }
+  };
+  const experience = value => {
+    if (value.length < 3 || value.length > 20) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          The niveau must be between 3 and 20 characters.
+        </div>
+      );
+    }
+  };
+  const speciality = value => {
+    if (value.length < 3 || value.length > 20) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          The niveau must be between 3 and 20 characters.
+        </div>
+      );
+    }
+  };
 
 const vpassword = value => {
   if (value.length < 6 || value.length > 40) {
@@ -111,38 +175,58 @@ const vpassword = value => {
   }
 };
 
-export default class Register extends Component {
+ class Register extends Component {
   constructor(props) {
     super(props);
     this.handleRegister = this.handleRegister.bind(this);
-    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangeFirstname = this.onChangeFirstname.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
-    this.onChangeNiveau = this.onChangeNiveau.bind(this);
-    this.onChangeGoverment = this.onChangeGoverment.bind(this);
-    this.onChangeBirthday = this.onChangeBirthday.bind(this);
-    this.onChangeEntreprise = this.onChangeEntreprise.bind(this);
     this.onChangeNumber = this.onChangeNumber.bind(this);
-    this.onChangeSite = this.onChangeSite.bind(this);    
-    this.onChangeLangue = this.onChangeLangue.bind(this);  
+    this.onChangeBirthday = this.onChangeBirthday.bind(this);
+    this.onChangeAdresse = this.onChangeAdresse.bind(this);    
+    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeEducation = this.onChangeEducation.bind(this);
+    this.onChangeFile = this.onChangeFile.bind(this);
+    this.onChangeCity = this.onChangeCity.bind(this);   
+    this.onChangeLevelEnglish = this.onChangeLevelEnglish.bind(this);   
+    this.onChangeLevelFrensh = this.onChangeLevelFrensh.bind(this);   
+    this.onChangeLevelGermany = this.onChangeLevelGermany.bind(this);   
+   this.onChangeDrivingLicence = this.onChangeDrivingLicence.bind(this);
+   this.onChangeLastname = this.onChangeLastname.bind(this);  
+   this.onChangeGender = this.onChangeGender.bind(this);  
+   this.onChangeExperience = this.onChangeExperience.bind(this); 
+   this.onChangeSpeciality = this.onChangeSpeciality.bind(this);       
+     
     this.state = {
-      username: "",      
+      firstname: "",      
       email: "",
-      password: "",
-      niveau: "",
-      goverment:"",
-      birthday:"",
       number:"",
-      entreprise:"",
-      langue:"",
-      site:"",
-      successful: false,
+      birthday:"",
+      adresse:"",
+      password: "",
+      education: "",
+      file:"",
+      city:"",
+      levelEnglish:"",
+      levelGermany:"",
+      levelFrensh:"",
+      drivingLicence:"",
+      lastname:"",
+      gender:"",
+      experience:"",
+      speciality:"",      
+           successful: false,
       message: ""
     };
   }
-  onChangeLangue(e) {
+  onChangeFirstname(e) {
     this.setState({
-      langue: e.target.value
+      firstname: e.target.value
+    });
+  }
+  onChangeEmail(e) {
+    this.setState({
+      email: e.target.value
     });
   }
   onChangeNumber(e) {
@@ -150,48 +234,78 @@ export default class Register extends Component {
       number: e.target.value
     });
   }
-  onChangeEntreprise(e) {
-    this.setState({
-      entreprise: e.target.value
-    });
-  }
-  onChangeUsername(e) {
-    this.setState({
-      username: e.target.value
-    });
-  }
-
-  onChangeEmail(e) {
-    this.setState({
-      email: e.target.value
-    });
-  }
-
-  onChangePassword(e) {
-    this.setState({
-      password: e.target.value
-    });
-  }
-  onChangeNiveau(e) {
-    this.setState({
-      niveau: e.target.value
-    });
-  }
-  onChangeGoverment(e) {
-    this.setState({
-      goverment: e.target.value
-    });
-  }
   onChangeBirthday(e) {
     this.setState({
       birthday: e.target.value
     });
   }
-  onChangeSite(e) {
+  onChangeAdresse(e) {
     this.setState({
-      site: e.target.value
+      adresse: e.target.value
     });
   }
+  onChangeEducation(e) {
+    this.setState({
+      education: e.target.value
+    });
+  }
+  onChangeFile(e) {
+    this.setState({
+      file: e.target.value
+    });
+  }
+  
+  onChangeCity(e) {
+    this.setState({
+      city: e.target.value
+    });
+  }
+  onChangeLevelEnglish(e) {
+    this.setState({
+      levelEnglish: e.target.value
+    });
+  }
+  onChangeLevelFrensh(e) {
+    this.setState({
+      levelFrensh: e.target.value
+    });
+  }
+  onChangeLevelGermany(e) {
+    this.setState({
+      levelGermany: e.target.value
+    });
+  }
+   onChangeDrivingLicence(e) {
+    this.setState({
+      drivingLicence: e.target.value
+    });
+  }
+  onChangeLastname(e) {
+    this.setState({
+      lastname: e.target.value
+    });
+  }
+  onChangeGender(e) {
+    this.setState({
+      gender: e.target.value
+    });
+  }
+  onChangeExperience(e) {
+    this.setState({
+      experience: e.target.value
+    });
+  }
+  onChangeSpeciality(e) {
+    this.setState({
+      speciality: e.target.value
+    });
+  }
+    onChangePassword(e) {
+    this.setState({
+      password: e.target.value
+    });
+  }
+  
 
   handleRegister(e) {
     e.preventDefault();
@@ -205,23 +319,27 @@ export default class Register extends Component {
 
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.register(
-        this.state.username,
+        this.state.firstname,
         this.state.email,
-        this.state.password,
-        this.state.niveau,
-        this.state.goverment,
-        this.state.birthday,
-        this.state.site,
         this.state.number,
-        this.state.entreprise,
-        this.state.langue,
-      
-      ).then(
+        this.state.birthday,
+        this.state.adresse,
+        this.state.education,
+        this.state.file,
+        this.state.city,
+        this.state.levelEnglish,
+        this.state.levelFrensh,
+        this.state.levelGermany,
+        this.state.drivingLicence,
+        this.state.lastname,
+        this.state.gender,
+        this.state.experience,
+        this.state.speciality,
+        this.state.password
+            ).then(
         response => {
-          this.setState({
-            message: response.data.message,
-            successful: true
-          });
+          this.props.router.navigate("/");
+          window.location.reload();
         },
         error => {
           const resMessage =
@@ -242,154 +360,270 @@ export default class Register extends Component {
 
   render() {
     return (
-      <div className="col-md-12">
-        <div className="card card-container">
+      <div className="container candidat pe-5 bg-primary-subtle">
+      <div className="row">
+        <div className="col-md-4 ps-0 small-candid">
           <img
             src={image2}
             alt="profile-img"
-            className="image-2"
+            className="image-candid"
           />
-
+        </div>
+    
+        <div className="col-md-8 group-form">
           <Form
             onSubmit={this.handleRegister}
-            ref={c => {
+            ref={(c) => {
               this.form = c;
             }}
           >
             {!this.state.successful && (
-              <div>
-                <div className="form-group two">
-                  <label htmlFor="username">Username</label>
-                  <Input
-                    type="text"
-                    className="form-control bordure"
-                    name="username"
-                    value={this.state.username}
-                    onChange={this.onChangeUsername}
-                    validations={[required, vusername]}
-                  />
-                </div>
-
-                <div className="form-group two">
-                  <label htmlFor="email">Email</label>
-                  <Input
-                    type="text"
-                    className="form-control bordure"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.onChangeEmail}
-                    validations={[required, email]}
-                  />
-                </div>
-                <div className="form-group two">
-                  <label htmlFor="entreprise">entreprise</label>
-                  <Input
-                    type="text"
-                    className="form-control bordure"
-                    name="entreprise"
-                    value={this.state.entreprise}
-                    onChange={this.onChangeEntreprise}
-                    validations={[required, entreprise]}
-                  />
-                </div>
-                <div className="form-group two">
-                  <label htmlFor="number">Number</label>
-                  <Input
-                    type="number"
-                    className="form-control bordure"
-                    name="number"
-                    value={this.state.number}
-                    onChange={this.onChangeNumber}
-                    validations={[required, number]}
-                  />
-                </div>
-                <div className="form-group two">
-                  <label htmlFor="site">Site</label>
-                  <Input
-                    type="text"
-                    className="form-control bordure"
-                    name="site"
-                    value={this.state.site}
-                    onChange={this.onChangeSite}
-                    validations={[required, site]}
-                  />
-                </div>
-                <div className="form-group two">
-                  <label htmlFor="langue">langue</label>
-                  <select
-                    type="text"
-                    className="form-control bordure"
-                    name="langue"
-                    value={this.state.langue}
-                    onChange={this.onChangeLangue}
-                    validations={[required, langue]}
-                  >
-                    <option className="english">English</option>
-                    <option className="germany">Germny</option>
-                    <option className="frensh">Frensh</option>
+              <div className="row">
+                <div className="col-md-5 first-col">
+                  <div className="form-group">
+                    <label htmlFor="firstname">First Name</label>
+                    <Input
+                      type="text"
+                      className="form-control for"
+                      name="firstname"
+                      value={this.state.firstname}
+                      onChange={this.onChangeFirstname}
+                      validations={[required, vfirstname]}
+                    />
+                  </div>
+    
+                  <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <Input
+                      type="text"
+                      className="form-control for"
+                      name="email"
+                      value={this.state.email}
+                      onChange={this.onChangeEmail}
+                      validations={[required, email]}
+                    />
+                  </div>
+    
+                  <div className="form-group">
+                    <label htmlFor="number">Number</label>
+                    <Input
+                      type="number"
+                      className="form-control for"
+                      name="number"
+                      value={this.state.number}
+                      onChange={this.onChangeNumber}
+                      validations={[required, number]}
+                    />
+                  </div>
+    
+                  <div className="form-group">
+                    <label htmlFor="birthday">Date of Birth</label>
+                    <Input
+                      type="date"
+                      className="form-control for"
+                      name="birthday"
+                      value={this.state.birthday}
+                      onChange={this.onChangeBirthday}
+                      validations={[required, birthday]}
+                    />
+                  </div>
+    <div className="col-8">
+                  <div className="form-group">
+                    <label htmlFor="adresse" className="label-adresse">adresse</label>
+                    <Input
+                      type="text"
+                      className="form-control adresse"
+                      name="adresse"
+                      value={this.state.adresse}
+                      onChange={this.onChangeAdresse}
+                      validations={[required, adresse]}
+                    />
+                  </div>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="education">Education Level</label>
+                    <select
+                     type="text"
+                      className="form-control for"
+                      name="education"
+                      value={this.state.education}
+                      onChange={this.onChangeEducation}
+                      validations={[required, education]}
+                      >
+                    <option>bac+0</option>
+                    <option>bac+1</option>
+                    <option>bac+2</option>
+                    <option>bac+3</option>
+                    <option>bac+6</option>
                     </select>
-                </div>
-               
-                <div className="form-group two">
-                  <label htmlFor="niveau">Niveau</label>
-                  <select
-                    type="text"
-                    className="form-control bordure"
-                    name="niveau"
-                    value={this.state.niveau}
-                    onChange={this.onChangeNiveau}
-                    validations={[required, niveau]}
-                    >                      <option value="">Sélectionnez un niveau</option>
-    <option value="sans bac">Sans bac</option>
-    <option value="bac">Bac</option>
-    <option value="bac+2">Bac+2</option>
-    <option value="bac+3">Bac+3</option>
-    <option value="bac+4">Bac+4</option>
+                  </div>
+    
+                  <div className="form-group">
+                    <label htmlFor="levelEnglish">Level English</label>
+                    <select
+                      className="form-control for"
+                      name="levelEnglish"
+                      value={this.state.levelEnglish}
+                      onChange={this.onChangeLevelEnglish}
+                      validations={[required, levelEnglish]}
+                    >
+                      <option value="A1">A1</option>
+                      <option value="A2">A2</option>
+                      <option value="B1">B1</option>
+                    </select>
+                  </div>
+    
+                  <div className="form-group">
+                    <label htmlFor="levelGermany">Level Germany</label>
+                    <select
+                      className="form-control for"
+                      name="levelGermany"
+                      value={this.state.levelGermany}
+                      onChange={this.onChangeLevelGermany}
+                      validations={[required, levelGermany]}
+                    >
+                      <option value="A1">A1</option>
+                      <option value="C2">C2</option>
+                      <option value="C3">C3</option>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="levelFrensh">Level Frensh</label>
+                    <select
+                      className="form-control for"
+                      name="levelFrensh"
+                      value={this.state.levelFrensh}
+                      onChange={this.onChangeLevelFrensh}
+                      validations={[required, levelFrensh]}
+                    >
+                      <option value="A1">A1</option>
+                      <option value="C2">C2</option>
+                      <option value="C3">C3</option>
+                    </select>
+                  </div>
+                      </div>
+    
+                <div className="col-md-3 second-col">
+                  <div className="form-group word">
+                    <label htmlFor="lastname" className="word-last">lastname</label>
+                    <Input
+                      type="text"
+                      className="form-control for"
+                      name="lastname"
+                      value={this.state.lastname}
+                      onChange={this.onChangeLastName}
+                      validations={[required, lastname]}
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <Input
+                      type="password"
+                      className="form-control for"
+                      name="password"
+                      value={this.state.password}
+                      onChange={this.onChangePassword}
+                      validations={[required, vpassword]}
+                    />
+                  </div>
+    
+                  <div className="form-group">
+                    <label htmlFor="gender">Gender</label>
+                    <select
+                      type="text"
+                      className="form-control for"
+                      name="gender"
+                      value={this.state.gender}
+                      onChange={this.onChangeGender}
+                      validations={[required, gender]}
+                  >
+                    <option>male</option>
+                    <option>female</option>
+                    </select>
+                  </div>
+    
+                  <div className="form-group">
+                    <label htmlFor="city">City</label>
+                    <Input
+                      type="text"
+                      className="form-control for"
+                      name="city"
+                      value={this.state.city}
+                      onChange={this.onChangeCity}
+                      validations={[required, city]}
+                    />
+                  </div>
+    
+                 <div className="form-group experience">
+                    <label htmlFor="experience">Experience</label>
+                    <select
+                      className="form-control for"
+                      name="experience"
+                      value={this.state.experience}
+                      onChange={this.onChangeExperience}
+                      validations={[required, experience]}
+                    >
+                      <option value="0-2">0-2</option>
+                      <option value="2-4">2-4</option>
+                      <option value="4-6">4-6</option>
+                      <option value="6+">6+</option>
+                    </select>
+                  </div>
+    
+                  <div className="form-group">
+                    <label htmlFor="speciality">Speciality</label>
+                    <select
+                      type="text"
+                      className="form-control for"
+                      name="speciality"
+                      value={this.state.speciality}
+                      onChange={this.onChangeSpeciality}
+                      validations={[required, speciality]}
+                    >
+                      <option>infogrfist</option>
+                      <option>developer</option>
+                      <option>marketing</option>
+                      <option>design</option>
                       </select>
-                </div>
-              
-                <div className="form-group two">
-                  <label htmlFor="goverment">Goverment</label>
-                  <Input
-                    type="text"
-                    className="form-control bordure"
-                    name="goverment"
-                    value={this.state.goverment}
-                    onChange={this.onChangeGoverment}
-                    validations={[required, goverment]}
-                  />
-                </div>                
-                <div className="form-group two">
-                  <label htmlFor="entreprise">Date of Birth</label>
-                  <Input
-                    type="date"
-                    className="form-control bordure"
-                    name="birthday"
-                    value={this.state.birthday}
-                    onChange={this.onChangeBirthday}
-                    validations={[required, birthday]}
-                  />
-                </div>
-                <div className="form-group two">
-                  <label htmlFor="password">Password</label>
-                  <Input
-                    type="password"
-                    className="form-control bordure"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.onChangePassword}
-                    validations={[required, vpassword]}
-                  />
-                </div>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="drivingLicence">drivingLicence</label>
+                    <select
+                      type="text"
+                      className="form-control for"
+                      name="drivingLicence"
+                      value={this.state.drivingLicence}
+                      onChange={this.onChangeDrivingLicence}
+                      validations={[required, drivingLicence]}
+                    >
+                    <option>yes</option>
+                    <option>No</option>
+                    </select>
 
-
-                <div className="form-group">
-                  <button className="btn btn-primary btn-block push">Sign Up</button>
-                </div>
+                  </div>
+    
+                  <div className="form-group">
+                    <label htmlFor="file">CV file</label>
+                    <Input
+                      type="file"
+                      className="form-control for"
+                      name="file"
+                      value={this.state.file}
+                      onChange={this.onChangeFile}
+                      validations={[required, file]}
+                    />
+                  </div>
+                  </div>
+    <div className="col-8">
+                  <div className="form-group w-100 ">
+                  <button className="btn btn-primary btn-block full-width">Sign Up</button>
+                  </div>
+                  </div>
+               
               </div>
-            )}
-
-            {this.state.message && (
+             )}
+              {this.state.message && (
               <div className="form-group">
                 <div
                   className={
@@ -402,7 +636,8 @@ export default class Register extends Component {
                   {this.state.message}
                 </div>
               </div>
-            )}            
+              
+            )}
             <CheckButton
               style={{ display: "none" }}
               ref={c => {
@@ -412,6 +647,9 @@ export default class Register extends Component {
           </Form>
         </div>
       </div>
+    </div>
+    
     );
   }
 }
+export default crudRouter(Register);

@@ -10,7 +10,7 @@ import './Footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // Example import from @fortawesome/free-brands-svg-icons
 import { faSquareFacebook, faSquareTwitter,faSquareInstagram, } from '@fortawesome/free-brands-svg-icons';
-import {faPhone } from '@fortawesome/free-solid-svg-icons';
+
 
 
 const Footer =() => {

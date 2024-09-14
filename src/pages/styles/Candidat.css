@@ -1,23 +1,76 @@
-.image-2 { 
-    width: 30%;;
-    height: auto;
-    margin-left: 43%;
-    background-color: dodgerblue;
-    max-width: 300px;
-    object-fit: contain;
-    margin-top: 15px;
+.image-candid { 
+    width: 35%;
+     margin-left: 35%;
+    object-fit:contain;   
+    margin-top: 75%;
+   
+     
+   }
+   .small-candid {
+     background-color: dodgerblue;
+     height: 698px;
+     width: 380px;
+     padding-top: 0;
+   }
+.second-col {
+ margin-left: 15px;
+    margin-top: 35px;
+}
+.container {
+   
+    border: 1px solid;
+       padding-left: 0px;
+    margin-top: 20px;
+    
+    width: 1200px;
+    height: 700px;
+
+}
+.first-col {
+    margin-left: 95px;
+    margin-top: 35px;
     
 }
-.push {
-    width: 40%;
-    margin-left: 37%;
+
+.for {
+    width: 210px;
+    height: 32px;
     border: 1px solid;
-    border-radius: 15px;
-    margin-bottom: 10px;
+   
 }
-.two {
-margin-left: 25%;
-}
-.bordure {
+
+.adresse {
+    width: 510px;
+    height: 30px;
     border: 1px solid;
+    margin-left: 15px;
 }
+
+ .label-adresse{
+    margin-left:18px !important;
+    margin-bottom: 5px;
+}
+label {
+    margin-bottom: 5px;
+
+    font-weight: bold;
+}
+.full-width {
+   width: 100%;
+  margin-left: 15%;
+  margin-top: 20px !important;
+  width: calc(100% + 50px);
+
+}
+.experience {
+    margin-top: 60px;
+}
+.input-dotted {
+    border: 3px dotted #ccc;
+}
+.form-group {
+    margin-right: 100px !important;
+}
+
+
+

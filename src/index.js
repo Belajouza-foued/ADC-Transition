@@ -1,17 +1,14 @@
 import ReactDOM from "react-dom/client";
 import React, { useState, useEffect } from 'react'; 
 import 'bootstrap/dist/css/bootstrap.css';
-import { BrowserRouter, Routes, Route,useLocation } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from'./pages/Home';
-import Footer from "./components/footer/Footer";
 import Login from'./pages/Login';
 import Spinner from './components/Spinner';
 import Payment from'./pages/Payment';
 import Avis from'./pages/Avis';
 import Navbar from './components/navbar/Navbar';
 import Candidat from './pages/Candidat';
-import Entreprise from "./pages/Entreprise";
 import Formation from "./pages/Formation";
 import Projet from "./pages/Projet";
 import Solution from "./pages/Solution";
@@ -20,22 +17,9 @@ import Profil from "./pages/Profil";
 import CandidatHome from "./pages/Candidat.home";
 import EmployerHome from "./pages/Employer.home"
 import Employer from "./pages/Employer";
-function Layout() {
-  const location = useLocation();
-  const hideNavbar = location.pathname === '/login';
-  const hideFooter = location.pathname === '/login';
-  
-
-  return (
-    <>
-      {!hideNavbar && <Navbar />}
-      <Outlet /> 
-      {!hideFooter && <Footer />}
-         
-    </>
-  );
-}
-
+import ProfilEmployer from "./pages/ProfilEmployer";
+import EmployerRegister from "./pages/EmployerRegister";
+import Dashboard from "./pages/Dashboard";
 
 export default function App(){
   const [loading, setLoading] = useState(true);
@@ -56,11 +40,9 @@ export default function App(){
     <>   
 <BrowserRouter>
 <Routes>
-  <Route path="/" element={<Layout/>}>
-    <Route index element={<Login/>}/>
+       <Route index element={<Login/>}/>
+    <Route path="home" element={<Home/>}></Route>
  <Route path="candidat" element={<Candidat/>}/> 
- <Route path="entreprise" element={<Entreprise/>}></Route>
- <Route path="login" element={<Login/>}></Route>
  <Route path="payment" element={<Payment/>}></Route>
  <Route path="avis" element={<Avis/>}></Route>
  <Route path="projet" element={<Projet/>}></Route>
@@ -69,11 +51,12 @@ export default function App(){
  <Route path="register" element={<Register/>}></Route>
  <Route path="profil" element={<Profil/>}></Route>
  <Route path="candidat-home" element={<CandidatHome/>}></Route>
- <Route path="home" element={<Home/>}></Route>
  <Route path="employer" element={<Employer/>}></Route>
  <Route path="employer-home" element={<EmployerHome/>}></Route>
-
-  </Route>
+ <Route path="navbar" element={<Navbar/>}></Route>
+ <Route path="profilEmployer" element={<ProfilEmployer/>}></Route>
+ <Route path="employerRegister" element={<EmployerRegister/>}></Route>
+ <Route path="dashboard" element={<Dashboard/>}></Route>
 </Routes>
 </BrowserRouter>
 

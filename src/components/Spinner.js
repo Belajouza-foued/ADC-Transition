@@ -5,7 +5,7 @@ import '../components/Spinner.css' // Assurez-vous que ce fichier existe et cont
 const LoadingSpinner = () => (
   <div className="loading-spinner">
     <div className="spinner">
-      <span className='spinner-text'>loading</span></div>         
+      <span className='spinner-text'></span></div>         
   </div>
 );
 

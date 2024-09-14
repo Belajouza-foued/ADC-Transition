@@ -1,10 +1,10 @@
 .img-fluid {
-    width: 350px;
-     margin-left: 15%;
-    height: 680px;
+    width: 30%;
+     margin-left: 35%;
     object-fit:contain;   
-    margin-top: 25px;
-    padding-bottom: 5px;
+    margin-top:65%;
+    padding-bottom: 0px;
+    
     
 }
 .row {
@@ -12,46 +12,52 @@
     margin-right: 0;
   }
   
-  .col-md-4, .col-md-8 {
-    padding-left: 0;
-    padding-right: 0;
-  }
+ 
   
   .image-col {
     padding-left: 0px; /* Ajustez selon le besoin */
-    
-    
-  background-color:dodgerblue;  
+    padding-top: 0;
+       background-color:dodgerblue;  
+       height: 600px;
+       
+   
+     
   }
   
   .form-col {
-    padding-right: 15px; /* Ajustez selon le besoin */
+   
     padding-top: 5px;
+  
+   
+   
   }
    
   
   
 .form-position {
     background-color: #f8f9fa;    
-width: 680px;  
+width: 800px;  
   padding-top: 25px;
-  height: 750px;   
+  height: 600px;  
   justify-content: center;
-    border: 1px solid;
-    margin-bottom: 10px;   
-    padding-right: 0px;     
+  padding-left: 40px;
+  border: none;
+ 
+   
+    
    }
    
- .container-fluid {
-   margin-left: 11%;   
-   width: 100%;
-   padding-left: 0px;
-   padding-right: 0px;
-   padding-top: 2px;
-    }
+  .login{
+   width: 1200px; 
+ margin-left: 150px;
+ padding-left: 60px; 
+ height: 602px !important;
+ margin-top: 25px;
+border: none;
+}
 .title-sign {
     font-weight:bold ;
-    margin-top: 70px;
+    margin-top: 40px;
     font-family: 50px;
     margin-left: 20px;   
 }
@@ -63,32 +69,36 @@ h4.title-sign {
 }
 .label-email {
     margin-left: 23px;
-    margin-top: 30px;
+    margin-top: 10px;
     font-size: large;
     font-weight: bolder;
 }
+.one {
+    margin-bottom: 20px;
+}
 .label-password {
     margin-left: 23px;
-    margin-top: 30px;
+    margin-top: 10px;
     font-size: large;
     font-weight: bolder;
 }
 .form-control.email-1 {   
     width:100%;
-    margin-left: 10px;
-    margin-top: 25px;
+  
+    margin-top: 10px;
     height: 45px;
-    width: calc(100% + 60px); 
+    width: calc(100% + 150px); 
     border: 1px solid;
+    
 }
 
 .form-control.password-1 {       
     width:100%;
-    margin-left: 10px;
-    margin-top: 25px; 
+  
+    margin-top: 10px; 
     margin-right: -30px; 
     height: 45px;
-    width: calc(100% + 60px);
+    width: calc(100% + 150px);
     border: 1px solid 
 }
 .input-icon {
@@ -122,7 +132,7 @@ h4.title-sign {
     display: flex;
     margin-left: 300px;
     width: 40%;
-    margin-top: 30px;
+    margin-top: 10px;
     border: 1px solid;
     border: 1px solid;
    
@@ -130,16 +140,16 @@ h4.title-sign {
 
 .form-group {
     width: 50%;
-    margin-left: 20%;    
+    margin-left: 13%;    
 
 }
 .btn-block {
     width: 100%;
-  margin-left: 10px;
+  
     margin-top: 20px;    
     height: 45px;
     border: 1px solid;
-    width: calc(100% + 60px);
+    width: calc(100% + 150px);
     border: 1px solid;
 }
 .pass {
@@ -159,12 +169,8 @@ h4.title-sign {
     font-weight:600;
     font-size: 15px;
 }
-.links {
-    margin-top: 20px;
-}
-.two {
-    margin-top: 10px;
-}
+
+
 .candid.form-control {
     width: 25%;
     margin-left: 13%;
@@ -174,7 +180,7 @@ h4.title-sign {
 
 .employ.form-control {
     width: 25%;
-    margin-left: 23%;
+    margin-left: 20%;
     height: 40px;
    
 

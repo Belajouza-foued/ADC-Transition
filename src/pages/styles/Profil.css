@@ -1,0 +1,46 @@
+.profile {
+ border: none;
+    }
+    .jumbotron {
+        display: flex;
+        justify-content: center;
+    }
+    .status {
+        display: flex;
+        justify-content: space-between;
+     
+    
+    }
+    .no-border {
+        border: none;
+    }
+    .img-profile {
+width: 100px;
+    }
+    .btn-lg {
+        width: 55%;
+        height: 45px
+    }
+    
+    .btn-floating {
+        width:40px;
+        border: none;
+   
+    }
+    .btn-danger {
+        color: white;
+        width: 40%;
+        margin-bottom: 10px;
+    
+    }
+    .nav-link {
+        color: white;
+    }
+    .role-profil {
+        color:dodgerblue;
+        font-size: xx-large;
+        margin-left: 40%;
+        margin-top: 50px;
+        list-style-type: none;
+       
+    }

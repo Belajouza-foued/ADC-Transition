@@ -6,8 +6,9 @@ import { isEmail } from "validator";
 import EmployerAuthService from "../services/employer.auth.service";
 import './styles/Employer.css'
 import image2 from "../pages/images/logo-adc.png"
+import image3 from "../pages/images/profil.webp"
 
-
+import { EmployerCrudRouter } from '../Crud-router';
 
 const required = value => {
   if (!value) {
@@ -56,7 +57,25 @@ const entreprise = value => {
       );
     }
   };
-  const site = value => {
+  const city = value => {
+    if (value.length < 3 || value.length > 20) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          The niveau must be between 3 and 20 characters.
+        </div>
+      );
+    }
+  };
+  const education = value => {
+    if (value.length < 3 || value.length > 20) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          The niveau must be between 3 and 20 characters.
+        </div>
+      );
+    }
+  };
+  const lastname = value => {
     if (value.length < 3 || value.length > 20) {
       return (
         <div className="alert alert-danger" role="alert">
@@ -77,7 +96,7 @@ const vpassword = value => {
   }
 };
 
-export default class Register extends Component {
+ class EmployerRegister extends Component {
   constructor(props) {
     super(props);
     this.handleRegister = this.handleRegister.bind(this);
@@ -85,15 +104,20 @@ export default class Register extends Component {
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onChangeEntreprise = this.onChangeEntreprise.bind(this);
-    this.onChangeSite = this.onChangeSite.bind(this);
+    this.onChangeCity = this.onChangeCity.bind(this);
     this.onChangeNumber = this.onChangeNumber.bind(this);
+    this.onChangeEducation = this.onChangeEducation.bind(this);
+    this.onChangeLastname = this.onChangeLastname.bind(this);
+    
     this.state = {
       username: "",      
       email: "",
       password: "",
       entreprise: "",
       number:"",
-      site:"",      
+      city:"",   
+      lastname:"",
+      education:"",   
       successful: false,
       message: ""
     };
@@ -127,9 +151,19 @@ export default class Register extends Component {
       number: e.target.value
     });
   }
-  onChangeSite(e) {
+  onChangeCity(e) {
     this.setState({
-      site: e.target.value
+      city: e.target.value
+    });
+  }
+  onChangeEducation(e) {
+    this.setState({
+      education: e.target.value
+    });
+  }
+  onChangeLastname(e) {
+    this.setState({
+      lastname: e.target.value
     });
   }
 
@@ -150,13 +184,13 @@ export default class Register extends Component {
         this.state.password,
         this.state.number,
         this.state.entreprise,
-        this.state.site
+        this.state.city,
+        this.state.education,
+        this.state.lastname,
       ).then(
         response => {
-          this.setState({
-            message: response.data.message,
-            successful: true
-          });
+          this.props.router.navigate("/");
+          window.location.reload();
         },
         error => {
           const resMessage =
@@ -177,15 +211,16 @@ export default class Register extends Component {
 
   render() {
     return (
-      <div className="col-md-12">
-        <div className="card card-container contain">
-            <div className="image-2">
+            <div className="container employer bg-primary-subtle">
+          <div className="row">
+          <div className="col-md-4 ps-0 img-employ">
           <img
             src={image2}
             alt="profile-img"
-            
-          /></div>
-
+            className="image-employer"
+          />
+        </div>
+<div className="col-8">
           <Form
             onSubmit={this.handleRegister}
             ref={c => {
@@ -193,9 +228,19 @@ export default class Register extends Component {
             }}
           >
             {!this.state.successful && (
-              <div className="row">
-                <div className="col-6">
-                <div className="form-group left">
+         <div className="row">
+          <div className="col-6">
+          <div className="profil-img">
+          <img
+            src={image3}
+            alt="profile-img"
+            className="image-profil"
+          />
+        </div>
+        </div>
+        
+<div className="left me-5">
+                <div className="form-group">
                   <label htmlFor="username">Username</label>
                   <Input
                     type="text"
@@ -207,7 +252,7 @@ export default class Register extends Component {
                   />
                 </div>
 
-                <div className="form-group left">
+                <div className="form-group">
                   <label htmlFor="email">Email</label>
                   <Input
                     type="text"
@@ -219,7 +264,7 @@ export default class Register extends Component {
                   />
                 </div>
 
-                <div className="form-group left">
+                <div className="form-group">
                   <label htmlFor="password">Password</label>
                   <Input
                     type="password"
@@ -230,9 +275,9 @@ export default class Register extends Component {
                     validations={[required, vpassword]}
                   />
                 </div>
-                
                 </div>
-                <div className="col-6">
+               
+                <div className="right">
                 <div className="form-group">
                   <label htmlFor="entreprise">Entreprise</label>
                   <Input
@@ -255,22 +300,50 @@ export default class Register extends Component {
                     validations={[required, number]}
                   />
                 </div>
+               
                 <div className="form-group">
-                  <label htmlFor="site">Site</label>
+                  <label htmlFor="city">city</label>
                   <Input
                     type="text"
                     className="form-control cadre"
-                    name="niveau"
-                    value={this.state.site}
-                    onChange={this.onChangeSite}
-                    validations={[required, site]}
+                    name="city"
+                    value={this.state.city}
+                    onChange={this.onChangeCity}
+                    validations={[required, city]}
+                  />
+                </div>
+                </div>
+
+                <div className="last">
+                <div className="form-group">
+                  <label htmlFor="education">Education</label>
+                  <Input
+                    type="text"
+                    className="form-control cadre"
+                    name="education"
+                    value={this.state.education}
+                    onChange={this.onChangeEducation}
+                    validations={[required, education]}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="lastname">last name</label>
+                  <Input
+                    type="text"
+                    className="form-control cadre"
+                    name="lastname"
+                    value={this.state.lastname}
+                    onChange={this.onChangeLastname}
+                    validations={[required, lastname]}
                   />
                 </div>
 
                 <div className="form-group">
-                  <button className="btn btn-primary btn-cadre">Sign Up</button>
+                  <button className="btn btn-cadre">Sign Up</button>
                 </div>
-              </div>
+                </div>
+               
+              
               </div>
             )}
 
@@ -296,9 +369,10 @@ export default class Register extends Component {
               }}
             />
           </Form>
+          </div>
         </div>
       </div>
-      
-    );
+        );
   }
 }
+export default EmployerCrudRouter(EmployerRegister);

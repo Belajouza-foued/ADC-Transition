@@ -22,18 +22,25 @@ class AuthService {
     localStorage.removeItem("candidat");
   }
 
-  register(username, email, entreprise, number, site, langue, goverment, niveau, birthday,password,) {
+  register(firstname, email,number, birthday, adresse,education, file,city, levelEnglish,levelFrensh,levelGermany,drivingLicence,lastname,gender,experience,speciality,password,) {
     return axios.post(API_URL + "signup/candidat", {  
       
-    username,    
+      firstname,    
       email,
-      entreprise,
       number,
-      site,
-      langue,  
-      niveau,         
-      goverment,
-      birthday,
+      birthday,     
+      adresse,
+      education,  
+      file,         
+      city,
+      levelEnglish,
+      levelFrensh,
+      levelGermany,
+      drivingLicence,
+      lastname,
+      gender,
+      experience,
+      speciality,    
       password,
     });
   }

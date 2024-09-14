@@ -22,7 +22,7 @@ class EmployerAuthService {
     localStorage.removeItem("employer");
   }
 
-  register(username, email, password, entreprise, number, site) {
+  register(username, email, password, entreprise, number, city, education, lastname) {
     return axios.post(API_URL + "signup/employer", {  
       
         username,    
@@ -30,11 +30,13 @@ class EmployerAuthService {
       password,
       number,
       entreprise,
-     site,
+     city,
+     education,
+     lastname,
     });
   }
 
-  getCurrentUser() {
+  getEmploy() {
     return JSON.parse(localStorage.getItem('employer'));;
   }
 }

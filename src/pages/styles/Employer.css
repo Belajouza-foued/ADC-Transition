@@ -1,31 +1,82 @@
 
 .btn-cadre {
-    margin-top: 35px;   
-    width: 40%;
-    margin-left: 30%;
+   
+    width: 170px;
+    margin-top: 25px;
+       border: 1px solid;
+    color: blue;
+    margin-right: 10px;
+    
+     
+}
+.btn-cadre:hover {
+   background-color: dodgerblue;
 }
 label{
     color: #325277;
 }
-
-.image-2 img {
-    width: 80% ;
-    margin-left: 15px;
-}
-.image-2 {
-    overflow: hidden;
-    border: 1px solid ;
-    border-radius: 50%;
-    width: 150px;
+.img-employ {
     background-color: dodgerblue;
-    
+    width: 400px;
 }
-.image-2 :hover {
-transform: scale(1.2);
+
+.image-employer {
+            width:30%;
+        height: 600px;  
+       margin-left: 35%;
+        object-fit: contain;    
+               }
+               
+.image-profil {
+width: 110px;
+height: 110px;
+border-radius: 50%;
+margin-left: 45px;
+margin-top: 25px;
+border: 1px solid;
 }
 .left {
-    margin-left: 25%;
+   display: flex;
+  justify-content:center;
+  width: 46%;
+    margin-top: 5% !important;
+    margin-left: 270px;
+
+ 
 }
-.contain {
-    height: 450px;
+.right {
+    display: flex;
+    justify-content: center;
+    width: 46%;
+    margin-top: 60px;
+    margin-left: 270px;
+       
+}
+.last {
+display: flex;
+justify-content: center;
+
+width: 46%;
+margin-top: 60px;
+margin-left: 275px;
+
+}
+.form-group {
+    margin-right: 20px;
+}
+.employer {
+        border: none;
+    padding-left: 0px;
+ margin-top: 30px;
+  width: 1300px;
+height: 600px;
+
+}
+
+
+
+.cadre {
+    width: 170px;
+    border: 2px solid;
+    height: 35px;
 }

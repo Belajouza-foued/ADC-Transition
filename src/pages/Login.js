@@ -7,9 +7,8 @@ import '../pages/styles/Login.css'
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
 import  {faEnvelope, faLock, faUser, faHouseChimneyWindow } from '@fortawesome/free-solid-svg-icons';
 import image1 from './images/logo-adc.png';
-
 import AuthService from "../services/auth.service";
-
+import EmployerAuthService from "../services/employer.auth.service";
 import { crudRouter } from '../Crud-router';
 import { Link } from "react-router-dom";
 
@@ -68,7 +67,32 @@ class Login extends Component {
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.email, this.state.password).then(
         () => {
-          this.props.router.navigate("/profil");
+          this.props.router.navigate("/dashboard");
+          window.location.reload();
+        },
+        error => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+
+          this.setState({
+            loading: false,
+            message: resMessage
+          });
+        }
+      );
+    } else {
+      this.setState({
+        loading: false
+      });
+    }
+    if (this.checkBtn.context._errors.length === 0) {
+      EmployerAuthService.login(this.state.email, this.state.password).then(
+        () => {
+          this.props.router.navigate("/profilEmployer");
           window.location.reload();
         },
         error => {
@@ -94,13 +118,14 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container-fluid card card-container">
+    
+      <div className="container login">
         <div className="row">
       <div className="col-md-4 image-col">   
                   <img
             src={image1}
             alt="profile-img"
-            className="img-fluid responsive-image"
+            className="img-fluid"
           />
 </div>
 <div className="col-md-8 form-col p-0">
@@ -112,7 +137,7 @@ class Login extends Component {
             className="form-position"
           >
             
-            <div className="form-group one">
+            <div className="form-group">
             <h4 className="title-sign">Sign in</h4>
             <label htmlFor="email" className="label-email">Email :</label>
             <div className="input-icon">
@@ -136,7 +161,7 @@ class Login extends Component {
             <FontAwesomeIcon icon={faLock} className="inside-password" />
           )}
                           <Input
-                type="text"
+                type="password"
                 className="form-control password-1"
                 name="username"
                 value={this.state.password}
@@ -185,7 +210,7 @@ class Login extends Component {
           
           </div>
         </div>
-      
+        
     );
   }
 }
